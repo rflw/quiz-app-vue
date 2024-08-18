@@ -25,6 +25,6 @@ const allAnswers: ComputedRef<string[]> = computed(() => shuffleAnswers(currentQ
   <div v-if="currentQuestion" class="question-container">
     <p class="question">{{ currentQuestion.question }}</p>
     <p class="">{{ currentQuestion.difficulty }}</p>
-    <button v-for="(answer, index) in allAnswers" :key="index" v-text="answer" class="button" />
+    <button v-for="(answer, index) in allAnswers" :key="index" v-html="answer" class="button" />
   </div>
 </template>

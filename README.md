@@ -7,7 +7,8 @@ Create an quiz app using Trivia API.
 - ✅ Use [Trivia Api](https://opentdb.com/api_config.php) 
 - ✅ One question visible on the screen at once
 - ✅ Ability to go back to any question
-- ability to change given answer - if quiz is not finished
+- ✅ ability to change given answer
+  - if quiz is not finished
 - ✅ Showing progress of the quiz
 - After submitting there should be a summary 
   - with the chart, for example:

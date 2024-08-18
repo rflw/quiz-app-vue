@@ -1,10 +1,8 @@
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ComputedRef, ref, Ref } from "vue";
 import { useTriviaStore } from "./useTrivia";
-import { QuestionIndex } from "@/types/trivia";
 
 type AnswerEntity = {
-  questionIndex: QuestionIndex,
   answer: string,
   isCorrect: boolean
 };
@@ -15,7 +13,7 @@ export const useUserAnswersStore = defineStore('userAnswers', () => {
 
   const allAnswers: Ref<AnswerEntity[]> = ref([]);
   const allAnswersCount: ComputedRef<number> = computed(() => allAnswers.value.length);
-  const currentAnswerId: ComputedRef<AnswerEntity> = computed(() => allAnswers.value[currentQuestionIndex.value]);
+  const currentAnswer: ComputedRef<AnswerEntity> = computed(() => allAnswers.value[currentQuestionIndex.value] ?? {answer: '', isCorrect: false});
 
   function setAnswer(answer: AnswerEntity): void {
     allAnswers.value[currentQuestionIndex.value] = answer;
@@ -24,7 +22,7 @@ export const useUserAnswersStore = defineStore('userAnswers', () => {
   return {
     allAnswers,
     allAnswersCount,
-    currentAnswerId,
+    currentAnswer,
     setAnswer
   }
 });

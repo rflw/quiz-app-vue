@@ -26,7 +26,6 @@ export const routes: RouteRecordRaw[] = [
         props: (route: RouteRecordInfo) => ({ id: parseInt(route.params.id as string) }),
       }
     ],
-    meta: { isLazyView: true },
     beforeEnter: async (to: RouteLocationNormalized, from: RouteLocationNormalizedLoaded) => {
       // TODO: remove `to`, `from` if unused
       // TODO: don't init if it's redirect or quiz is in progress

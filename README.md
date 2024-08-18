@@ -10,7 +10,7 @@ Create an quiz app using Trivia API.
 - ✅ ability to change given answer
   - if quiz is not finished
 - ✅ Showing progress of the quiz
-- After submitting there should be a summary 
+- ✅ After submitting there should be a summary
   - with the chart, for example:
     - correct to incorrect answers ratio
     - few last quizzes results

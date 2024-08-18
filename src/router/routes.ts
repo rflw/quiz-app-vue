@@ -23,7 +23,7 @@ export const routes: RouteRecordRaw[] = [
         path: '',
         name: routeNames.QUESTIONS,
         component: () => import('@/views/Questions.vue'), // TODO: change component name
-        props: (route: RouteRecordInfo) => ({ id: parseInt(route.params.id as string) }),
+        props: (route: RouteRecordInfo) => ({ questionIndex: parseInt(route.params.id as string) }), // TODO: add error handle if value is NaN
       }
     ],
     beforeEnter: async (to: RouteLocationNormalized, from: RouteLocationNormalizedLoaded) => {

@@ -2,6 +2,7 @@ import { RouteLocationNormalized, RouteLocationNormalizedLoaded, RouteRecordInfo
 import * as routeNames from '@/types/routes';
 import { useTriviaStore } from '@/store/useTrivia';
 
+// TODO: add 404 route
 export const routes: RouteRecordRaw[] = [
   {
     path: '/', 

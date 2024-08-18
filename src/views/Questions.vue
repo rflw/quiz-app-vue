@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Question from '@/components/Question.vue';
+import QuestionNavigation from '@/components/QuestionNavigation.vue';
 import { useTriviaStore } from '@/store/useTrivia';
 import { watch } from 'vue';
 
@@ -17,8 +18,7 @@ watch(
 </script>
 
 <template>
-  About ... Quotes
-  <br>
   {{ props.questionIndex }}
   <Question />
+  <QuestionNavigation />
 </template>

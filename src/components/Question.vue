@@ -1,28 +1,20 @@
 <script setup lang="ts">
-import { computed, ComputedRef } from 'vue';
 import { storeToRefs } from 'pinia';
-import * as routeNames from '@/types/routes';
-import { FIRST_QUESTION_INDEX, useTriviaStore } from '@/store/useTrivia';
+import { useTriviaStore } from '@/store/useTrivia';
+import { computed, ComputedRef, toRefs } from 'vue';
 
 const triviaStore = useTriviaStore();
-const { currentQuestionIndex, allQuestionsCount, currentQuestion } = storeToRefs(triviaStore);
+const { currentQuestion } = storeToRefs(triviaStore);
+const { question, correct_answer, incorrect_answers } = toRefs(currentQuestion.value);
 
-const isFirstQuestionIndex: ComputedRef<boolean> = computed(() => currentQuestionIndex.value === FIRST_QUESTION_INDEX);
-const isLastQuestionIndex: ComputedRef<boolean> = computed(() => currentQuestionIndex.value >= (allQuestionsCount.value - 1));
-const nextQuestionIndex: ComputedRef<number> = computed(() => currentQuestionIndex.value + 1);
-const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestionIndex.value - 1);
+// TODO: randomize
+const combinedAnswers: ComputedRef<string[]> = computed(() => ([correct_answer.value, ...incorrect_answers.value]))
 </script>
 
 <template>
   <template v-if="currentQuestion">
-    <p>{{ currentQuestion.question }}</p>
+    <p>{{ question }}</p>
     <p>{{ currentQuestion.difficulty }}</p>
-    <p>{{ currentQuestion.correct_answer }}</p>
-    <p>{{ currentQuestion.incorrect_answers }}</p>
+    <button v-for="(answer, index) in combinedAnswers" :key="index" v-text="answer" />
   </template>
-
-  <RouterLink v-if="!isFirstQuestionIndex" :to="{ name: routeNames.QUESTIONS, params: { id: previousQuestionIndex } }">Previous Question</RouterLink>
-  <RouterLink v-if="!isLastQuestionIndex" :to="{ name: routeNames.QUESTIONS, params: { id: nextQuestionIndex } }">Next Question</RouterLink>
-
-  <RouterLink v-if="isLastQuestionIndex" :to="{ name: routeNames.RESULTS }">Zakończ</RouterLink>
 </template>

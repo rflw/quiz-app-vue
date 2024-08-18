@@ -35,7 +35,8 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button,
+.button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -45,16 +46,26 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-
-button {
+  &:hover {
+    border-color: #646cff;
+  }
   &:focus,
   &:focus-visible,
   &.is-active {
     outline: 4px auto -webkit-focus-ring-color;
+  }
+  &[disabled],
+  &.is-disabled {
+    color: #494551;
+    outline: unset;
+    border-width: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+  &.is-primary {
+    &:not([disabled]):not(.is-disabled) {
+      filter: drop-shadow(0 0 7px #646cff);
+    }
   }
 }
 

@@ -34,13 +34,16 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
       </RouterLink>
     </div>
 
-    <RouterLink
-      class="button is-primary finish"
-      :class="{'is-disabled': !isQuizCompleted}"
-      :to="{ name: routeNames.RESULTS }"
-    >
-      Finish
-    </RouterLink>
+    <div class="finish-button-container">
+      <RouterLink
+        class="button is-primary finish"
+        :class="{'is-disabled': !isQuizCompleted}"
+        :to="{ name: routeNames.RESULTS }"
+      >
+        Finish
+      </RouterLink>
+      <small class="unlock-note">Answer every question and you will unlock the button.</small>
+    </div>
   </div>
 </template>
 
@@ -50,9 +53,15 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
   gap: 4em;
   justify-content: center;
 }
-.finish {
+.finish-button-container {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   bottom: 10vh;
+  left: 50%;
   transform: translateX(-50%);
+}
+.unlock-note {
+  margin-top: 1em;
 }
 </style>

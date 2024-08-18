@@ -37,3 +37,5 @@ type TriviaAPIResponse = {
 }
 
 export type ResponseData = Nullable<TriviaAPIResponse>;
+
+export type QuestionIndex = number;

@@ -1,0 +1,3 @@
+<template>
+  Results view
+</template>

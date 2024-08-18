@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia';
 import { computed, ComputedRef, Ref, ref } from 'vue';
-import { NumberRef } from '@/types/core';
 import { API_URL } from '@/config/trivia';
-import { ResponseData, Questions, QuestionEntity } from '@/types/trivia';
+import { ResponseData, Questions, QuestionEntity, QuestionIndex } from '@/types/trivia';
 
 export const FIRST_QUESTION_INDEX = 0;
 
 export const useTriviaStore = defineStore('trivia', () => {
   const questions: Ref<Questions> = ref([]);
-  const currentQuestionIndex: NumberRef = ref(FIRST_QUESTION_INDEX);
+  const currentQuestionIndex: Ref<QuestionIndex> = ref(FIRST_QUESTION_INDEX);
 
   const allQuestionsCount: ComputedRef<number> = computed(() => questions.value.length);
   const hasQuestions: ComputedRef<boolean> = computed(() => Boolean(allQuestionsCount.value));

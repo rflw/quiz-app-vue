@@ -1,32 +1,24 @@
 <script setup lang="ts">
-import { onBeforeRouteUpdate } from 'vue-router';
 import Question from '@/components/Question.vue';
 import { useTriviaStore } from '@/store/useTrivia';
-import { storeToRefs } from 'pinia';
+import { watch } from 'vue';
 
 const props = defineProps<{
-  id: number
+  questionIndex: number
 }>();
 
-// same as beforeRouteUpdate option but with no access to `this`
-onBeforeRouteUpdate(async (to, from) => {
-  console.log('onBeforeRouteUpdate', to.params, from.params);
-  const triviaStore = useTriviaStore();
-  const { currentQuestionIndex } = storeToRefs(triviaStore);
+const triviaStore = useTriviaStore();
 
-  // TOOD: use setNextQuestionIndex
-  currentQuestionIndex.value = Number(to.params.id);
-  
-  // only fetch the user if the id changed as maybe only the query or the hash changed
-  // if (to.params.id !== from.params.id) {
-  //   userData.value = await fetchUser(to.params.id)
-  // }
-})
+watch(
+  () => props.questionIndex,
+  (questionIndex) => triviaStore.setCurrentQuestionIndex(questionIndex),
+  { immediate: true }
+);
 </script>
 
 <template>
   About ... Quotes
   <br>
-  {{ props.id }}
+  {{ props.questionIndex }}
   <Question />
 </template>

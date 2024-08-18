@@ -43,7 +43,11 @@ export const useTriviaStore = defineStore('trivia', () => {
 
     console.log('store :: setNextQuestionIndex', currentQuestionIndex.value);
 
-    currentQuestionIndex.value = currentQuestionIndex.value + 1;
+    setCurrentQuestionIndex(currentQuestionIndex.value + 1)
+  }
+
+  function setCurrentQuestionIndex(index: number): void {
+    currentQuestionIndex.value = index;
   }
 
   return {
@@ -52,7 +56,8 @@ export const useTriviaStore = defineStore('trivia', () => {
     currentQuestion,
     allQuestionsCount,
     initState,
-    nextQuestion: setNextQuestionIndex
+    nextQuestion: setNextQuestionIndex,
+    setCurrentQuestionIndex
   };
 });
 

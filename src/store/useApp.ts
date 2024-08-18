@@ -1,5 +1,5 @@
 import { defineStore, storeToRefs } from "pinia";
-import { computed, ComputedRef, ref, Ref } from "vue";
+import { computed, ComputedRef } from "vue";
 import { useUserAnswersStore } from "./useUserAnswers";
 import { useTriviaStore } from "./useTrivia";
 

@@ -14,12 +14,37 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
 </script>
 
 <template>
-  <div>
-    <RouterLink v-if="!isFirstQuestionIndex" :to="{ name: routeNames.QUESTIONS, params: { id: previousQuestionIndex } }">Previous Question</RouterLink>
-    <RouterLink v-if="!isLastQuestionIndex" :to="{ name: routeNames.QUESTIONS, params: { id: nextQuestionIndex } }">Next Question</RouterLink>
-  </div>
-  
-  <div>
-    <RouterLink v-if="isLastQuestionIndex" :to="{ name: routeNames.RESULTS }">Finish</RouterLink>
+  <div class="navigation">
+    <div class="step-links">
+      <RouterLink
+        v-if="!isFirstQuestionIndex"
+        :to="{ name: routeNames.QUESTIONS, params: { id: previousQuestionIndex } }"
+      >
+        Previous Question
+      </RouterLink>
+      
+      <RouterLink
+        v-if="!isLastQuestionIndex"
+        :to="{ name: routeNames.QUESTIONS, params: { id: nextQuestionIndex } }"
+      >
+        Next Question
+      </RouterLink>
+    </div>
+
+    <RouterLink class="finish" v-if="isLastQuestionIndex" :to="{ name: routeNames.RESULTS }">Finish</RouterLink>
   </div>
 </template>
+
+<style scoped>
+.step-links {
+  display: flex;
+  gap: 4em;
+  justify-content: center;
+}
+
+.finish {
+  position: fixed;
+  bottom: 10vh;
+  transform: translateX(-50%);
+}
+</style>

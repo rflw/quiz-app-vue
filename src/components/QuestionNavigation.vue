@@ -63,5 +63,6 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
 }
 .unlock-note {
   margin-top: 1em;
+  color: #a5a5a5;
 }
 </style>

@@ -12,7 +12,7 @@ export const useUserAnswersStore = defineStore('userAnswers', () => {
   const { currentQuestionIndex } = storeToRefs(triviaStore);
 
   const allAnswers: Ref<AnswerEntity[]> = ref([]);
-  const allAnswersCount: ComputedRef<number> = computed(() => allAnswers.value.length);
+  const allAnswersCount: ComputedRef<number> = computed(() => allAnswers.value.filter(value => value).length);
   const currentAnswer: ComputedRef<AnswerEntity> = computed(() => allAnswers.value[currentQuestionIndex.value] ?? {answer: '', isCorrect: false});
 
   function setAnswer(answer: AnswerEntity): void {

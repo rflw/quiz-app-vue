@@ -1,4 +1,4 @@
-import { RouteLocationNormalized, RouteLocationNormalizedLoaded, RouteRecordInfo, RouteRecordRaw } from 'vue-router';
+import { RouteRecordInfo, RouteRecordRaw } from 'vue-router';
 import * as routeNames from '@/types/routes';
 import { useTriviaStore } from '@/store/useTrivia';
 

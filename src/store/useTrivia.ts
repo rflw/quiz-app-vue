@@ -14,7 +14,7 @@ export const useTriviaStore = defineStore('trivia', () => {
 
   const currentQuestion: ComputedRef<QuestionEntity> = computed(() => questions.value[currentQuestionIndex.value]);
 
-  async function initState() {
+  async function initState(): Promise<void> {
     console.log('store :: init()');
 
     if (hasQuestions.value) {
@@ -61,7 +61,6 @@ export const useTriviaStore = defineStore('trivia', () => {
 });
 
 export async function fetchQuestions(): Promise<ResponseData | Error> {
-  console.log('fetchQuestions');
   const response = await fetch(API_URL);
 
   if (!response.ok) {

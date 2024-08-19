@@ -3,12 +3,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { computed, ComputedRef, ref, Ref } from 'vue';
 import { isNavigationFailure, useRouter } from 'vue-router';
-
-enum LOADING_STATE {
-  DONE,
-  IN_PROGRESS,
-  ERROR
-}
+import { LOADING_STATE } from '@/types/layout';
 
 const router = useRouter();
 

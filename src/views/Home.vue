@@ -10,5 +10,8 @@ const startRoute = {
 </script>
 
 <template>
-  <RouterLink :to="startRoute">Start</RouterLink>
+  <div>
+    <h1 class="title">Quiz Game</h1>
+    <RouterLink class="button" :to="startRoute">Start Quiz</RouterLink>
+  </div>
 </template>

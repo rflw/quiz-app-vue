@@ -19,9 +19,13 @@ watch(
 </script>
 
 <template>
-  <QuestionsProgress />
-  <Question />
-  <QuestionNavigation />
+  <Transition name="fade" mode="out-in">
+    <div class="question-view">
+      <QuestionsProgress />
+      <Question />
+      <QuestionNavigation />
+    </div>
+  </Transition>
 </template>
 
 <style scoped>

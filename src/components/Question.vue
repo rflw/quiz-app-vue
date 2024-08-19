@@ -37,16 +37,18 @@ function isCorrectAnswer(currentAnswer: string): boolean {
 </script>
 
 <template>
-  <div v-if="currentQuestion" class="question-container">
-    <p class="question" v-html="currentQuestion.question" />
-    <button
-      v-for="(answer, index) in allAnswers"
-      :key="index"
-      type="button"
-      v-html="answer"
-      class="button"
-      :class="{'is-active': isCorrectAnswer(answer)}"
-      @click="onAnswerClick(answer)"
-    />
-  </div>
+  <Transition name="fade" appear mode="out-in" :key="currentQuestion">
+    <div v-if="currentQuestion" class="question-container">
+      <p class="question" v-html="currentQuestion.question" />
+      <button
+        v-for="(answer, index) in allAnswers"
+        :key="index"
+        type="button"
+        v-html="answer"
+        class="button"
+        :class="{'is-active': isCorrectAnswer(answer)}"
+        @click="onAnswerClick(answer)"
+      />
+    </div>
+  </Transition>
 </template>

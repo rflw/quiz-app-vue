@@ -17,11 +17,11 @@ export const routes: RouteRecordRaw[] = [
     // TODO: add redirect to QUESTIONS if quiz is currently in progress 
   },
   {
-    path: '/questions/:id',
+    path: '/questions',
     component: () => import('@/layouts/DefaultLayout.vue'),
     children: [
       {
-        path: '',
+        path: ':id',
         name: routeNames.QUESTIONS,
         component: () => import('@/views/Questions.vue'), // TODO: change component name
         props: (route: RouteRecordInfo) => ({ questionIndex: parseInt(route.params.id as string) }), // TODO: add error handle if value is NaN

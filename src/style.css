@@ -90,7 +90,18 @@ button,
   a:hover {
     color: #747bff;
   }
-  button {
+  button,
+  .button {
     background-color: #f9f9f9;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

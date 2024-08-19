@@ -22,15 +22,17 @@ const chartData: Ref<ChartData<'pie'>> = ref({
 </script>
 
 <template>
-  <h1>Results</h1>
-
-  <p class="total-score-ratio">
-    Total score ratio: {{ totalScoreRatioPercent }}%
-  </p>
-
-  <div class="chart-container">
-    <PieChart :options="options" :data="chartData">
-      Chart couldn't be loaded.
-    </PieChart>
+  <div class="results-view">
+    <h1>Results</h1>
+  
+    <p class="total-score-ratio">
+      Total score ratio: {{ totalScoreRatioPercent }}%
+    </p>
+  
+    <div class="chart-container">
+      <PieChart :options="options" :data="chartData">
+        Chart couldn't be loaded.
+      </PieChart>
+    </div>
   </div>
 </template>

@@ -38,10 +38,13 @@ function setCurrentState(state: LOADING_STATE): void {
 </script>
 
 <template>
-  <LoadingIndicator v-if="showLoadingIndicator" />
-  <ErrorMessage v-else-if="isLoadingError" />
-
-  <div v-else class="default-layout">
-    <RouterView />
+  <div>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <LoadingIndicator v-if="showLoadingIndicator" />
+        <ErrorMessage v-else-if="isLoadingError" />
+        <component v-else :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>

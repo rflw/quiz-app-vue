@@ -20,8 +20,6 @@ describe('User\'s answers', () => {
 
     const triviaStore = useTriviaStore();
     context.triviaStore = triviaStore;
-
-    await triviaStore.initState();
   });
 
   test('Set single answer', () =>  {

@@ -28,10 +28,7 @@ export const routes: RouteRecordRaw[] = [
       }
     ],
     beforeEnter: async () => {
-      // TODO: don't init if it's redirect or quiz is in progress
-      console.log('route - beforeEnter - before initState');
       await useTriviaStore().initState();
-      console.log('route - beforeEnter - after initState');
     }
   },
   {

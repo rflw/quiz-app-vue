@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   resolve: {
+    conditions: process.env.VITEST ? ['node'] : [],
     alias: {
       '@': path.resolve(__dirname, 'src')
     },

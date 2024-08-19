@@ -17,15 +17,18 @@ export const useAppStore = defineStore('appStore', () => {
 
   const isQuizCompleted: ComputedRef<boolean> = computed(() => allQuestionsCount.value === allAnswersCount.value);
 
-  const correctAnswers: ComputedRef<number> = computed(() => allAnswers.value.filter(answer => answer.isCorrect).length);
+  const correctAnswersCount: ComputedRef<number> = computed(() => allAnswers.value.filter(answer => answer.isCorrect).length);
 
   const totalScoreRatio: ComputedRef<TotalScoreRatioRaw> = computed(() => ({
-    correctAnswers: correctAnswers.value,
+    correctAnswers: correctAnswersCount.value,
     allAnswers: allAnswersCount.value
   }));
 
+  const totalScoreRatioPercent: ComputedRef<number> = computed(() => (correctAnswersCount.value / allAnswersCount.value) * 100 );
+
   return {
     totalScoreRatio,
-    isQuizCompleted
+    isQuizCompleted,
+    totalScoreRatioPercent
   }
 });

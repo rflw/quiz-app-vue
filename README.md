@@ -16,9 +16,9 @@ Create an quiz app using Trivia API.
     - time spent on each question
     - or any other statistic
 - Application should be responsive and work on
-  - desktop,
-  - tablet 
-  - mobile devices
+  - ✅ desktop,
+  - ✅ tablet 
+  - ✅ mobile devices
 - ✅ Nice loooking UI
 
 ### Additional features
@@ -34,4 +34,4 @@ You can use any package or library you want
 - ✅ Router
 
 ### What about tests?
-It would be good to show you know how to write them. You don't have to aim for 100% code coverage.
+✅ It would be good to show you know how to write them. You don't have to aim for 100% code coverage.

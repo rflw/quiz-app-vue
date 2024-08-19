@@ -14,19 +14,6 @@ export const useTriviaStore = defineStore('trivia', () => {
 
   const currentQuestion: ComputedRef<QuestionEntity> = computed(() => questions.value[currentQuestionIndex.value]);
 
-  async function initState(): Promise<void> {
-    if (hasQuestions.value) {
-      return;
-    }
-
-    try {
-      const apiData = await fetchQuestions() as ResponseData;
-      setQuestions(apiData?.results);
-    } catch(error) {
-      console.error(error);
-    }
-  }
-
   function setQuestions(newQuestions?: Questions): void {
     questions.value = newQuestions ?? [];
   }
@@ -48,7 +35,7 @@ export const useTriviaStore = defineStore('trivia', () => {
     currentQuestionIndex,
     currentQuestion,
     allQuestionsCount,
-    initState,
+    init: setQuestions,
     nextQuestion: setNextQuestionIndex,
     setCurrentQuestionIndex
   };

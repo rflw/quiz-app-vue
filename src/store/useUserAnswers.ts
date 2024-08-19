@@ -19,10 +19,15 @@ export const useUserAnswersStore = defineStore('userAnswers', () => {
     allAnswers.value[currentQuestionIndex.value] = answer;
   }
 
+  function init(): void {
+    allAnswers.value = [];
+  }
+
   return {
     allAnswers,
     allAnswersCount,
     currentAnswer,
+    init,
     setAnswer
   }
 });

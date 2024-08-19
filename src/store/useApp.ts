@@ -1,7 +1,8 @@
 import { defineStore, storeToRefs } from "pinia";
 import { computed, ComputedRef } from "vue";
 import { useUserAnswersStore } from "./useUserAnswers";
-import { useTriviaStore } from "./useTrivia";
+import { useTriviaStore, fetchQuestions } from "./useTrivia";
+import { ResponseData } from "@/types/trivia";
 
 type TotalScoreRatioRaw = {
   correctAnswers: number,
@@ -26,9 +27,21 @@ export const useAppStore = defineStore('appStore', () => {
 
   const totalScoreRatioPercent: ComputedRef<number> = computed(() => (correctAnswersCount.value / allAnswersCount.value) * 100 ?? 0 );
 
+  async function initState(): Promise<void> {
+    try {
+      const apiData = await fetchQuestions() as ResponseData;
+
+      triviaStore.init(apiData?.results);
+      userAnswersStore.init();
+    } catch(error) {
+      console.error(error);
+    }
+  }
+
   return {
     totalScoreRatio,
     isQuizCompleted,
-    totalScoreRatioPercent
+    totalScoreRatioPercent,
+    initState
   }
 });

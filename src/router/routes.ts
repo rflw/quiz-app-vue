@@ -1,8 +1,7 @@
 import { RouteRecordInfo, RouteRecordRaw } from 'vue-router';
 import * as routeNames from '@/types/routes';
-import { useTriviaStore } from '@/store/useTrivia';
+import { useAppStore } from '@/store/useApp';
 
-// TODO: add 404 route
 export const routes: RouteRecordRaw[] = [
   {
     path: '/', 
@@ -14,7 +13,6 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/Home.vue')
       }
     ]
-    // TODO: add redirect to QUESTIONS if quiz is currently in progress 
   },
   {
     path: '/questions',
@@ -23,12 +21,12 @@ export const routes: RouteRecordRaw[] = [
       {
         path: ':id',
         name: routeNames.QUESTIONS,
-        component: () => import('@/views/Questions.vue'), // TODO: change component name
-        props: (route: RouteRecordInfo) => ({ questionIndex: parseInt(route.params.id as string) }), // TODO: add error handle if value is NaN
+        component: () => import('@/views/Questions.vue'),
+        props: (route: RouteRecordInfo) => ({ questionIndex: parseInt(route.params.id as string) }),
       }
     ],
     beforeEnter: async () => {
-      await useTriviaStore().initState();
+      await useAppStore().initState();
     }
   },
   {

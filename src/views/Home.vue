@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import * as routeNames from '@/types/routes';
-import { useTriviaStore } from '@/store/useTrivia';
+import { FIRST_QUESTION_INDEX } from '@/store/useTrivia';
 
-// TODO: change name
 const startRoute = {
   name: routeNames.QUESTIONS,
-  params: { id: useTriviaStore().currentQuestionIndex }
+  params: { id: FIRST_QUESTION_INDEX }
 };
 </script>
 

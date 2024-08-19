@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia';
 import PieChart from '@/components/PieChart.vue';
 import { computed, ComputedRef, ref, Ref } from 'vue';
 import type { ChartData } from 'chart.js';
+import { HOME } from '@/types/routes';
 
 const appStore = useAppStore();
 const { totalScoreRatioPercent, totalScoreRatio } = storeToRefs(appStore);
@@ -24,6 +25,8 @@ const chartData: Ref<ChartData<'pie'>> = ref({
 <template>
   <div class="results-view">
     <h1>Results</h1>
+
+    <RouterLink :to="{name: HOME}">Restart</RouterLink>
   
     <p class="total-score-ratio">
       Total score ratio: {{ totalScoreRatioPercent }}%

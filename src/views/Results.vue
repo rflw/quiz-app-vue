@@ -26,7 +26,7 @@ const chartData: Ref<ChartData<'pie'>> = ref({
   <div class="results-view">
     <h1>Results</h1>
 
-    <RouterLink :to="{name: HOME}">Restart</RouterLink>
+    <RouterLink class="button" :to="{name: HOME}">Restart</RouterLink>
   
     <p class="total-score-ratio">
       Total score ratio: {{ totalScoreRatioPercent }}%
@@ -39,3 +39,15 @@ const chartData: Ref<ChartData<'pie'>> = ref({
     </div>
   </div>
 </template>
+
+<style scoped>
+.chart-container {
+  max-height: 50vh;
+  display: flex;
+  justify-content: center;
+}
+.total-score-ratio {
+  margin-top: 1em;
+  font-weight: 700;
+}
+</style>

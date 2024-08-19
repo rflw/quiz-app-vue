@@ -73,11 +73,13 @@ button,
   padding: 2em;
 }
 
-#app {
+.app-container {
+  width: 100vw;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: light) {

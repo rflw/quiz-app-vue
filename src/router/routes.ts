@@ -27,8 +27,7 @@ export const routes: RouteRecordRaw[] = [
         props: (route: RouteRecordInfo) => ({ questionIndex: parseInt(route.params.id as string) }), // TODO: add error handle if value is NaN
       }
     ],
-    beforeEnter: async (to: RouteLocationNormalized, from: RouteLocationNormalizedLoaded) => {
-      // TODO: remove `to`, `from` if unused
+    beforeEnter: async () => {
       // TODO: don't init if it's redirect or quiz is in progress
       console.log('route - beforeEnter - before initState');
       await useTriviaStore().initState();

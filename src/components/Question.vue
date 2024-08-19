@@ -38,8 +38,7 @@ function isCorrectAnswer(currentAnswer: string): boolean {
 
 <template>
   <div v-if="currentQuestion" class="question-container">
-    <p class="question">{{ currentQuestion.question }}</p>
-    <p class="">{{ currentQuestion.difficulty }}</p>
+    <p class="question" v-html="currentQuestion.question" />
     <button
       v-for="(answer, index) in allAnswers"
       :key="index"

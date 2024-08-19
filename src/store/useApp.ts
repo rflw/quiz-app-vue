@@ -24,7 +24,7 @@ export const useAppStore = defineStore('appStore', () => {
     allAnswers: allAnswersCount.value
   }));
 
-  const totalScoreRatioPercent: ComputedRef<number> = computed(() => (correctAnswersCount.value / allAnswersCount.value) * 100 );
+  const totalScoreRatioPercent: ComputedRef<number> = computed(() => (correctAnswersCount.value / allAnswersCount.value) * 100 ?? 0 );
 
   return {
     totalScoreRatio,

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { HOME } from '@/types/routes';
+import ErrorMessage from '@/components/ErrorMessage.vue';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import { computed, ComputedRef, ref, Ref } from 'vue';
-import { isNavigationFailure, RouteLocationRaw, useRouter } from 'vue-router';
+import { isNavigationFailure, useRouter } from 'vue-router';
 
 enum LOADING_STATE {
   DONE,
@@ -10,14 +11,12 @@ enum LOADING_STATE {
 }
 
 const router = useRouter();
+
 const currentState: Ref<LOADING_STATE> = ref(LOADING_STATE.DONE);
 const isLoadingInProgress: ComputedRef<boolean> = computed(() => currentState.value === LOADING_STATE.IN_PROGRESS);
 const isLoadingError: ComputedRef<boolean> = computed(() => currentState.value === LOADING_STATE.ERROR);
 const isTheSameRouteName: Ref<boolean> = ref(false);
 const showLoadingIndicator: ComputedRef<boolean> = computed(() => isLoadingInProgress.value && !isTheSameRouteName.value);
-
-// force is used to avoid NavigationFailureType.duplicated, see https://router.vuejs.org/api/enums/NavigationFailureType.html#duplicated 
-const tryAgainRoute: Ref<RouteLocationRaw> = ref({ name: HOME, force: true });
 
 router.beforeEach(async (to, from) => {
   setCurrentState(LOADING_STATE.IN_PROGRESS);
@@ -39,15 +38,10 @@ function setCurrentState(state: LOADING_STATE): void {
 </script>
 
 <template>
-  <!-- TODO: use loader component -->
-  <p v-if="showLoadingIndicator">loading...</p>
-  <p v-else-if="isLoadingError">
-    <!-- TODO: use error message component -->
-    Ooops... Something went wrong.<br>We're working on it.
-    <RouterLink :to="tryAgainRoute">Try again</RouterLink>
-  </p>
+  <LoadingIndicator v-if="showLoadingIndicator" />
+  <ErrorMessage v-else-if="isLoadingError" />
 
-  <div v-else>
+  <div v-else class="default-layout">
     <RouterView />
   </div>
 </template>

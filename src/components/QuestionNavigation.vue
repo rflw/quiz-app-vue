@@ -42,7 +42,7 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
       >
         Finish
       </RouterLink>
-      <small class="unlock-note">Answer every question and you will unlock the button.</small>
+      <small class="unlock-note">Answer all questions and you will unlock the button.</small>
     </div>
   </div>
 </template>

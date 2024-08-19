@@ -40,7 +40,7 @@ function setCurrentState(state: LOADING_STATE): void {
 <template>
   <div>
     <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
+      <transition appear name="fade" mode="out-in">
         <LoadingIndicator v-if="showLoadingIndicator" />
         <ErrorMessage v-else-if="isLoadingError" />
         <component v-else :is="Component" />

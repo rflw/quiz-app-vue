@@ -16,7 +16,7 @@
   --mainButtonBorderColor: var(--color3);
   --mainButtonOutlineColor: var(--color3);
 
-  --mainButtonBorderColorActive: var(--mainBackgroundColor);
+  --mainButtonBorderColorActive: var(--mainTextColor);
   --mainButtonTextColorDisabled: var(--color5);
 
   --primaryButtonShadowColor: var(--color3);
@@ -72,10 +72,8 @@ button,
   color: var(--mainButtonTextColor);
   background-color: var(--mainButtonBackgroundColor);
   cursor: pointer;
-  transition: border-color 0.25s;
-  &:hover {
-    border-color: var(--mainButtonBorderColor);
-  }
+  transition: all 0.25s;
+  &:hover,
   &:focus,
   &:focus-visible,
   &.is-active {

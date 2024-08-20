@@ -23,7 +23,7 @@ enum QUESTION_DIFFICULTY {
 export type QuestionEntity = {
   type: QUESTION_TYPE,
   difficulty: QUESTION_DIFFICULTY,
-  category: string, // TODO: get categories names enum from TRIVIA API dynamically
+  category: string,
   question: string,
   correct_answer: string,
   incorrect_answers: Array<string>

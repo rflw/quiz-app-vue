@@ -2,7 +2,6 @@
 import { Pie } from 'vue-chartjs';
 import { Chart as ChartJS, Colors, ArcElement, Title, Tooltip, Legend, CategoryScale, LinearScale, ChartData } from 'chart.js';
 
-// TODO: review registers
 ChartJS.register(Colors, ArcElement, Title, Tooltip, Legend, CategoryScale, LinearScale);
 
 type Props = {

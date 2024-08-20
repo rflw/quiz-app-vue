@@ -10,7 +10,6 @@ const userAnswersStore = useUserAnswersStore();
 const { currentQuestion } = storeToRefs(triviaStore);
 const { currentAnswer: userAnswer } = storeToRefs(userAnswersStore);
 
-// TODO: move to appStore?
 function shuffleAnswers({ correct_answer, incorrect_answers }: QuestionEntity ): string[] {
   const totalPossibleAnswersCount = incorrect_answers.length + 1; // +1 adds correct answer to incorrect answers
   const randomIndex = Math.floor(Math.random() * totalPossibleAnswersCount);

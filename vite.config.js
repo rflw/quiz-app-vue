@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     host: true,
-    port: 8000, // Use this port in Docker
+    port: 8000,
     watch: {
       // usePolling: true // Add this line if you're using Windows and hot reload doesn't work
     }

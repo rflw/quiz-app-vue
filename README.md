@@ -22,6 +22,7 @@ Technical:
   - appStore - contains data related to the app state, e.g. `isQuizCompleted`
   - userAnswers - to store user answers
   - trivia - to store fetched trivia's API data
+- create root layout `DefaultLayout.vue` component to handle loading and error state, and to load main app views
 
 | view type | screenshot |
 | --- | --- |

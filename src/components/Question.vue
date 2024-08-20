@@ -40,15 +40,35 @@ function isCorrectAnswer(currentAnswer: string): boolean {
   <Transition name="fade" appear mode="out-in" :key="currentQuestion">
     <div v-if="currentQuestion" class="question-container">
       <p class="question" v-html="currentQuestion.question" />
-      <button
-        v-for="(answer, index) in allAnswers"
-        :key="index"
-        type="button"
-        v-html="answer"
-        class="button"
-        :class="{'is-active': isCorrectAnswer(answer)}"
-        @click="onAnswerClick(answer)"
-      />
+
+      <div class="answers-group">
+        <button
+          v-for="(answer, index) in allAnswers"
+          :key="index"
+          type="button"
+          v-html="answer"
+          class="button"
+          :class="{'is-active': isCorrectAnswer(answer)}"
+          @click="onAnswerClick(answer)"
+        />
+      </div>
     </div>
   </Transition>
 </template>
+
+<style scoped>
+.question-container,
+.answers-group {
+  display: flex;
+  flex-direction: column;
+}
+.question-container {
+  flex: 1 1 auto;
+}
+.answers-group {
+  margin-top: auto;
+  > .button + .button {
+    margin-top: 1em;
+  }
+}
+</style>

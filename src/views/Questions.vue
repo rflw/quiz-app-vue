@@ -29,6 +29,15 @@ watch(
 </template>
 
 <style scoped>
+.question-view {
+  justify-content: space-between;
+  align-items: stretch;
+  flex: 1 1 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  margin: 0 auto;
+}
 .navigation {
   margin-top: 2.5em;
 }

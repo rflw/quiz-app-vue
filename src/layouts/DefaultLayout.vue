@@ -33,7 +33,7 @@ function setCurrentState(state: LOADING_STATE): void {
 </script>
 
 <template>
-  <div>
+  <div class="app-view">
     <router-view v-slot="{ Component }">
       <transition appear name="fade" mode="out-in">
         <LoadingIndicator v-if="showLoadingIndicator" />

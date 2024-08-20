@@ -20,6 +20,7 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
   <div class="navigation">
     <div class="step-links">
       <RouterLink
+        class="previous"
         v-if="!isFirstQuestionIndex"
         :to="{ name: routeNames.QUESTIONS, params: { id: previousQuestionIndex } }"
       >
@@ -27,6 +28,7 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
       </RouterLink>
       
       <RouterLink
+        class="next"
         v-if="!isLastQuestionIndex"
         :to="{ name: routeNames.QUESTIONS, params: { id: nextQuestionIndex } }"
       >
@@ -34,15 +36,15 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
       </RouterLink>
     </div>
 
-    <div class="finish-button-container">
-      <RouterLink
-        class="button is-primary finish"
-        :class="{'is-disabled': !isQuizCompleted}"
-        :to="{ name: routeNames.RESULTS }"
-      >
-        Finish
-      </RouterLink>
-      <small class="unlock-note">Answer all questions and you will unlock the button.</small>
+    <div class="row is-finish" v-if="isQuizCompleted">
+      <Transition appear name="fade">
+        <RouterLink
+          class="button is-primary finish"
+          :to="{ name: routeNames.RESULTS }"
+        >
+          See results
+        </RouterLink>
+      </Transition>
     </div>
   </div>
 </template>
@@ -50,19 +52,16 @@ const previousQuestionIndex: ComputedRef<number> = computed(() => currentQuestio
 <style scoped>
 .step-links {
   display: flex;
-  gap: 4em;
-  justify-content: center;
+  margin-bottom: 5vh;
 }
-.finish-button-container {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  bottom: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
+.next {
+  margin-left: auto;
 }
-.unlock-note {
+.row.is-finish {
   margin-top: 1em;
-  color: #a5a5a5;
+  text-align: center;
+}
+.button.finish {
+  display: inline-block;
 }
 </style>

@@ -9,7 +9,7 @@ const startRoute = {
 </script>
 
 <template>
-  <div>
+  <div class="home-view">
     <h1 class="title">Quiz Game</h1>
     <RouterLink class="button" :to="startRoute">Start Quiz</RouterLink>
   </div>

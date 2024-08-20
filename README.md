@@ -1,37 +1,33 @@
-# Project requirements
+# About Project
 
-## Idea
-Create an quiz app using Trivia API.
+UX:
 
-## General requirements
-- ✅ Use [Trivia Api](https://opentdb.com/api_config.php) 
-- ✅ One question visible on the screen at once
-- ✅ Ability to go back to any question
-- ✅ ability to change given answer if quiz is not finished
-- ✅ Showing progress of the quiz
-- ✅ After submitting there should be a summary
-  - with the chart, for example:
-    - ✅ correct to incorrect answers ratio
-    - few last quizzes results
-    - time spent on each question
-    - or any other statistic
-- Application should be responsive and work on
-  - ✅ desktop,
-  - ✅ tablet 
-  - ✅ mobile devices
-- ✅ Nice loooking UI
+- supports light, dark mode and rwd
+- showing loading and error views during transitions between views
+- showing one question on the screen
+- allows to modify answered questions
+- showing progress (current question/total questions)
+- showing summary with chart
+- allows to restart the quiz - new questions set is loaded
 
-### Additional features
-If you want, you may also include additional features that come to your mind - that will be beneficial.
+Technical:
 
-### Can I use helper libraries / packages?
-You can use any package or library you want
+- app created using required stack:
+  - Vue 3 Composition API
+  - TypeScript
+  - Pinia
+  - Vue Router
+- a few example tests added using Vitest
+- separate data and logic between 3 stores:
+  - appStore - contains data related to the app state, e.g. `isQuizCompleted`
+  - userAnswers - to store user answers
+  - trivia - to store fetched trivia's API data
 
-### Which framework/library should I use?
-- ✅ Vue3 with CompositionApi
-- ✅ TypeScript
-- ✅ Store manegement solution: Pinia
-- ✅ Router
-
-### What about tests?
-✅ It would be good to show you know how to write them. You don't have to aim for 100% code coverage.
+| view type | screenshot |
+| --- | --- |
+| home | ![home view](screenshots/home.png) |
+| quiz | ![quiz view](screenshots/quiz-view.png) |
+| quiz completed<br>Button "See results" is visible and user still can change the questions | ![quiz view - complete](screenshots/quiz-view-complete.png) |
+| results | ![results view](screenshots/results-view.png) |
+| loading view | ![loading text](screenshots/loading-view.png) |
+| error view | ![error view](screenshots/error-view.png)
